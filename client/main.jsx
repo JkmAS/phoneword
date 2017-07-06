@@ -1,22 +1,25 @@
-import { Template } from 'meteor/templating';
-import { ReactiveVar } from 'meteor/reactive-var';
+import React from 'react';
+import { Meteor } from 'meteor/meteor';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
 
-import './main.html';
+//Redux store
+import Store from '../imports/store/store.js';
 
-Template.hello.onCreated(function helloOnCreated() {
-  // counter starts at 0
-  this.counter = new ReactiveVar(0);
-});
+//components
+import App from '../imports/ui/components/App.jsx';
 
-Template.hello.helpers({
-  counter() {
-    return Template.instance().counter.get();
-  },
-});
+function PhoneWord() {
+    return (
+        <Provider store={Store}>
+            <App/>
+        </Provider>
+    );
+}
 
-Template.hello.events({
-  'click button'(event, instance) {
-    // increment the counter when button is clicked
-    instance.counter.set(instance.counter.get() + 1);
-  },
+/**
+ * Meteor startup method for generating code
+ */
+Meteor.startup(() => {
+    render(<PhoneWord />, document.getElementById('app'));
 });
