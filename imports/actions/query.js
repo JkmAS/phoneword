@@ -1,7 +1,7 @@
 /**
- * @todo
+ * Action for change query.
  *
- * @param {string}  query
+ * @param {string} query Query.
  *
  * @return {Object}
  */

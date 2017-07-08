@@ -9,6 +9,9 @@ import Store from '../imports/store/store.js';
 //components
 import App from '../imports/ui/components/App.jsx';
 
+/**
+ * Set the provider with store to App component
+ */
 function PhoneWord() {
     return (
         <Provider store={Store}>

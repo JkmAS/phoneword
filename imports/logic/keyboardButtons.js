@@ -1,3 +1,6 @@
+/**
+ * Keyboard buttons - number and text presentation
+ */
 export const KEYBOARD_BUTTONS = [
     { "no" : 0, "text" : [" "] },
     { "no" : 1, "text" : ["_"] },

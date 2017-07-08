@@ -8,8 +8,9 @@ import InputBox from './InputBox.jsx';
 
 //keyboard
 import { KEYBOARD_BUTTONS } from '../../logic/keyboardButtons.js';
+
 /**
- * @todo
+ * Root component with App
  */
 export default class App extends Component {
 

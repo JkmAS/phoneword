@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 /**
- * @todo
+ * Component for displaying suggested words
  */
 export class SuggestionBox extends Component {
 
@@ -13,6 +14,13 @@ export class SuggestionBox extends Component {
         );
     }
 }
+
+/**
+ * Props words
+ */
+SuggestionBox.propTypes = {
+    words: PropTypes.oneOfType([PropTypes.string, PropTypes.array])
+};
 
 /**
  * Map state to props

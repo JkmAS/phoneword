@@ -1,7 +1,7 @@
 /**
- * @todo
+ * Action to display suggested words.
  *
- * @param {string} words
+ * @param {Array} words Array of suggested words.
  *
  * @return {Object}
  */
