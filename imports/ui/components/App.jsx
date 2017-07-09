@@ -3,7 +3,7 @@ import { Meteor } from 'meteor/meteor';
 
 //components
 import SuggestionBox from './SuggestionBox.jsx';
-import NumberButton from './NumberButton.jsx';
+import KeyboardButton from './KeyboardButton.jsx';
 import InputBox from './InputBox.jsx';
 
 //keyboard
@@ -20,7 +20,7 @@ export default class App extends Component {
                 <SuggestionBox/>
                 <InputBox/>
                 {KEYBOARD_BUTTONS.map(button =>
-                        <NumberButton
+                        <KeyboardButton
                             key={button.no}
                             {...button}
                         />

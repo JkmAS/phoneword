@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 export class SuggestionBox extends Component {
 
     render() {
+        console.log(this.props.words);
         return (
             <div>{this.props.words}</div>
         );

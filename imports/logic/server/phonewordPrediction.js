@@ -18,13 +18,17 @@ Meteor.methods({
      */
     'phoneword.prediction'(query) {
         if (Meteor.isServer) {
-            //check input
+            //check if query is only string
             check(query, String);
 
+            //reset variables from numbersToWords
             reset();
-            //@todo check the input - only 0-9 numbers
-            //@todo catch errors from function
-            return numbersToWords(query);
+
+            try {
+                return numbersToWords(query);
+            } catch (error){
+                throw error;
+            }
         }
     }
 });

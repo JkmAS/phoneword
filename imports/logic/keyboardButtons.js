@@ -2,7 +2,7 @@
  * Keyboard buttons - number and text presentation
  */
 export const KEYBOARD_BUTTONS = [
-    { "no" : 0, "text" : [" "] },
+    { "no" : 0, "text" : ["space"] },
     { "no" : 1, "text" : ["_"] },
     { "no" : 2, "text" : ["a", "b", "c"] },
     { "no" : 3, "text" : ["d", "e", "f"] },

@@ -17,53 +17,40 @@ export class InputBox extends Component {
      */
     constructor() {
         super();
-        this.writeNumber = this.writeNumber.bind(this);
-        this.showWords = this.showWords.bind(this);
+        this.deleteText = this.deleteText.bind(this);
     }
 
     /**
-     * Function, which changes query and call Meteor server method
-     *
-     * @param {Object} event Event.
+     * Delete query via delete button and remove suggested words
      */
-    writeNumber(event){
-        this.props.changeQuery(event.target.value);
-        //@todo onchange not evoke if change via buttons
-        Meteor.call('phoneword.prediction', event.target.value, this.showWords);
-    }
-
-    /**
-     * Callback function, which sets suggested words.
-     *
-     * @param {Meteor.Error} error Meteor error.
-     * @param {Array} result Response from server.
-     */
-    showWords(error, result){
-        //@todo
-        if(result) {
-            console.log(result);
-            this.props.showWords(result);
+    deleteText(){
+        let query = this.props.query;
+        if(query !== "") {
+            this.props.changeQuery("");
+            this.props.showWords("");
         }
-
     }
 
     render() {
         return (
-            //@todo check if positive number from 0-9 not -0 -> -9
-            <input type="number" placeholder="Type the numbers" value={this.props.query} onChange={this.writeNumber}/>
+            //@todo client check if positive number from 0-9 not -0 -> -9
+            <div>
+                <input type="number" value={this.props.query} disabled="disabled"/>
+                <button onClick={this.deleteText}>Del</button>
+            </div>
         );
     }
 }
 
 /**
  * Props query
- * Props showWords
  * Props changeQuery
+ * Props showWords
  */
 InputBox.propTypes = {
+    query: PropTypes.string,
     changeQuery: PropTypes.func,
-    showWords: PropTypes.func,
-    query: PropTypes.string
+    showWords: PropTypes.func
 };
 
 /**

@@ -1,4 +1,6 @@
 import { KEYBOARD_BUTTONS } from '../../logic/keyboardButtons.js';
+import { Meteor } from 'meteor/meteor';
+import { DICTIONARY } from './dictionary.js';
 
 /**
  * Transformation of the entered numbers into a text combination
@@ -10,6 +12,7 @@ let output = "";
 let pointer = 0;
 //Response to client via array
 let response = [];
+let words = DICTIONARY;
 
 /**
  * Resets the variables to their default values.
@@ -35,9 +38,6 @@ export function numbersToWords(query, previousChars = ""){
 
     //get chars according to number
     switch (number) {
-        case "0":
-            keyboardChars = KEYBOARD_BUTTONS[0].text;
-            break;
         case "1":
             keyboardChars = KEYBOARD_BUTTONS[1].text;
             break;
@@ -66,7 +66,7 @@ export function numbersToWords(query, previousChars = ""){
             keyboardChars = KEYBOARD_BUTTONS[9].text;
             break;
         default:
-            throw new Meteor.Error('bad-value', "Must be only number from 0 to 9");
+            throw new Meteor.Error('bad-value', "Must be only number from 1 to 9");
     }
 
     //for each char in chars array
