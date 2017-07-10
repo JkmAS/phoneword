@@ -10,7 +10,7 @@ export class SuggestionBox extends Component {
 
     render() {
         return (
-            <div>{this.props.words.join(" ")}</div>
+            <div className="suggestion">{this.props.words.join(" ")}</div>
         );
     }
 }

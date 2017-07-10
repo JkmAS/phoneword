@@ -34,7 +34,7 @@ export class InputBox extends Component {
     render() {
         return (
             <div>
-                <input type="number" value={this.props.query} disabled="disabled"/>
+                <input type="text" value={this.props.query} disabled="disabled"/>
                 <button onClick={this.deleteText}>Del</button>
             </div>
         );

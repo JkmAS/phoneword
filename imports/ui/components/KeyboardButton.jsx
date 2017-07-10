@@ -20,7 +20,10 @@ export default class KeyboardButton extends Component {
      * Handle click to button and call function of parent component
      */
     handleChange(){
-        this.props.typing(this.props.no);
+        //ignore 0 and 1 - no text
+        if(this.props.no != 0 && this.props.no != 1) {
+            this.props.typing(this.props.no);
+        }
     }
 
     render() {

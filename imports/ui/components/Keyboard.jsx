@@ -43,7 +43,7 @@ export class Keyboard extends Component {
      */
     typing(number){
         clearTimeout(this.timer);
-        this.setState({typing: "typing"});
+        this.setState({typing: "typing..."});
         let query = this.props.query + number;
 
         this.props.changeQuery(query);
@@ -54,7 +54,7 @@ export class Keyboard extends Component {
      * Function, which calls Meteor server method
      */
     callTransformation(query){
-        this.setState({typing: "calling text help"});
+        this.setState({typing: "calling text help, please wait..."});
         Meteor.call('phoneword.prediction', query, this.state.isWordFilterChecked, this.showWords);
     }
 
@@ -84,15 +84,18 @@ export class Keyboard extends Component {
     render() {
         return (
             <div>
-                <div>{this.state.typing}</div>
-                {KEYBOARD_BUTTONS.map(button =>
-                    <KeyboardButton
-                        key={button.no}
-                        {...button}
-                        typing={this.typing}
-                    />
-                )}
-                <input type="checkbox" checked={this.state.isWordFilterChecked} onChange={this.handleFilter} />
+                <div className="info">{this.state.typing}</div>
+                <div className="keyboard">
+                    {KEYBOARD_BUTTONS.map(button =>
+                        <KeyboardButton
+                            key={button.no}
+                            {...button}
+                            typing={this.typing}
+                        />
+                    )}
+                    <input type="checkbox" checked={this.state.isWordFilterChecked} onChange={this.handleFilter} />
+                    <small>Filter only existing words</small>
+                </div>
             </div>
         );
     }
