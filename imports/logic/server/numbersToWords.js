@@ -41,31 +41,31 @@ export function numbersToWords(query, previousChars = "", onlyExistingWords){
     //get chars according to number
     switch (number) {
         case "1":
-            keyboardChars = KEYBOARD_BUTTONS[1].text;
+            keyboardChars = KEYBOARD_BUTTONS[0].text;
             break;
         case "2":
-            keyboardChars = KEYBOARD_BUTTONS[2].text;
+            keyboardChars = KEYBOARD_BUTTONS[1].text;
             break;
         case "3":
-            keyboardChars = KEYBOARD_BUTTONS[3].text;
+            keyboardChars = KEYBOARD_BUTTONS[2].text;
             break;
         case "4":
-            keyboardChars = KEYBOARD_BUTTONS[4].text;
+            keyboardChars = KEYBOARD_BUTTONS[3].text;
             break;
         case "5":
-            keyboardChars = KEYBOARD_BUTTONS[5].text;
+            keyboardChars = KEYBOARD_BUTTONS[4].text;
             break;
         case "6":
-            keyboardChars = KEYBOARD_BUTTONS[6].text;
+            keyboardChars = KEYBOARD_BUTTONS[5].text;
             break;
         case "7":
-            keyboardChars = KEYBOARD_BUTTONS[7].text;
+            keyboardChars = KEYBOARD_BUTTONS[6].text;
             break;
         case "8":
-            keyboardChars = KEYBOARD_BUTTONS[8].text;
+            keyboardChars = KEYBOARD_BUTTONS[7].text;
             break;
         case "9":
-            keyboardChars = KEYBOARD_BUTTONS[9].text;
+            keyboardChars = KEYBOARD_BUTTONS[8].text;
             break;
         default:
             throw new Meteor.Error('bad-value', "Must be only number from 1 to 9");
