@@ -11,21 +11,24 @@ Meteor.methods({
      * Function, which calls the transformation.
      *
      * @param {string} query Query from client.
+     * @param {boolean} onlyExistingWords If true, return only existing words.
      *
      * @return {Array}  Array of text combinations
      *
      * @throws {Meteor.Error} Error
      */
-    'phoneword.prediction'(query) {
+    'phoneword.prediction'(query, onlyExistingWords = false) {
         if (Meteor.isServer) {
             //check if query is only string
             check(query, String);
+            //check onlyExistingWords is only boolean
+            check(onlyExistingWords, Boolean);
 
             //reset variables from numbersToWords
             reset();
 
             try {
-                return numbersToWords(query);
+                return numbersToWords(query, "", onlyExistingWords);
             } catch (error){
                 throw error;
             }

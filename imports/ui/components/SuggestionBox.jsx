@@ -9,9 +9,8 @@ import PropTypes from 'prop-types';
 export class SuggestionBox extends Component {
 
     render() {
-        console.log(this.props.words);
         return (
-            <div>{this.props.words}</div>
+            <div>{this.props.words.join(" ")}</div>
         );
     }
 }
@@ -20,7 +19,7 @@ export class SuggestionBox extends Component {
  * Props words
  */
 SuggestionBox.propTypes = {
-    words: PropTypes.oneOfType([PropTypes.string, PropTypes.array])
+    words: PropTypes.array
 };
 
 /**

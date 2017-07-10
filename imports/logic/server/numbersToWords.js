@@ -1,6 +1,6 @@
 import { KEYBOARD_BUTTONS } from '../../logic/keyboardButtons.js';
 import { Meteor } from 'meteor/meteor';
-import { DICTIONARY } from './dictionary.js';
+import checkWord from 'check-word';
 
 /**
  * Transformation of the entered numbers into a text combination
@@ -12,7 +12,8 @@ let output = "";
 let pointer = 0;
 //Response to client via array
 let response = [];
-let words = DICTIONARY;
+//setup the language for words check
+let words = checkWord('en');
 
 /**
  * Resets the variables to their default values.
@@ -20,6 +21,7 @@ let words = DICTIONARY;
 export function reset(){
     response = [];
     output = "";
+    pointer = 0;
 }
 
 /**
@@ -27,15 +29,15 @@ export function reset(){
  *
  * @param {string} query Query input from client.
  * @param {string} previousChars Previously obtained text result.
+ * @param {boolean} onlyExistingWords If true, return only existing words.
  *
  * @return {Array}  Array of text combinations
  *
  * @throws {Meteor.Error} Error
  */
-export function numbersToWords(query, previousChars = ""){
+export function numbersToWords(query, previousChars = "", onlyExistingWords){
     let number = query.charAt(pointer);
     let keyboardChars = [];
-
     //get chars according to number
     switch (number) {
         case "1":
@@ -78,12 +80,19 @@ export function numbersToWords(query, previousChars = ""){
         if(query.length !== (pointer+1)){
             pointer++;
             //recursively call function with previousChars
-            numbersToWords(query,output);
+            numbersToWords(query, output, onlyExistingWords);
             pointer--;
         //if the current pointer is in the end of query length
         } else {
             //add output to the response array
-            response.push(output);
+            if(onlyExistingWords){
+                //if output word exists
+                if(words.check(output)){
+                    response.push(output);
+                }
+            } else {
+                response.push(output);
+            }
             //set output to the previous chars
             output = previousChars;
         }

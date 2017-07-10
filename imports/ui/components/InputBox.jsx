@@ -27,13 +27,12 @@ export class InputBox extends Component {
         let query = this.props.query;
         if(query !== "") {
             this.props.changeQuery("");
-            this.props.showWords("");
+            this.props.showWords([]);
         }
     }
 
     render() {
         return (
-            //@todo client check if positive number from 0-9 not -0 -> -9
             <div>
                 <input type="number" value={this.props.query} disabled="disabled"/>
                 <button onClick={this.deleteText}>Del</button>
